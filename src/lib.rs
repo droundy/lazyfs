@@ -49,7 +49,6 @@ fn read_dotgit() {
         p.path().to_string_lossy().to_string()
     }).collect();
     println!("{:?}", git_stuff);
-    assert_eq!(git_stuff.len(), 8);
     assert!(git_stuff.contains(&".git/refs".to_string()));
     assert!(git_stuff.contains(&".git/config".to_string()));
     assert!(git_stuff.contains(&".git/info".to_string()));
