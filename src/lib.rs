@@ -75,9 +75,6 @@ fn read_src() {
 
 #[test]
 fn read_nonexistent() {
-    let stuff: Vec<_> = read_dir("this does not exist").map(|p| {
-        p.path().to_string_lossy().to_string()
-    }).collect();
-    println!("{:?}", stuff);
+    let stuff: Vec<_> = read_dir("this does not exist").collect();
     assert_eq!(stuff.len(), 0);
 }
