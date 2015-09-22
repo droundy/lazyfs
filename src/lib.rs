@@ -13,8 +13,8 @@
 //! }
 //! ```
 
-/// The iterator over entries in a directory.  In case of errors, it
-/// does not return any (more?) entries.
+/// The iterator over entries in a directory.  It returns all the
+/// entries that can be read without error.
 pub enum ReadDir {
     Ok(std::fs::ReadDir),
     Err,
@@ -25,9 +25,12 @@ impl Iterator for ReadDir {
         match *self {
             ReadDir::Err => None,
             ReadDir::Ok(ref mut rd) => {
-                match rd.next() {
-                    Some(Ok(de)) => Some(de),
-                    _ => None,
+                loop {
+                    match rd.next() {
+                        Some(Ok(de)) => { return Some(de); }
+                        Some(Err(_)) => {}
+                        None => { return None; }
+                    }
                 }
             },
         }
