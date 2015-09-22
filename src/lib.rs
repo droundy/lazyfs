@@ -60,6 +60,17 @@ fn read_dotgit() {
 }
 
 #[test]
+fn read_src() {
+    let stuff: Vec<_> = read_dir("src").filter(|p| {
+        p.path().extension() == Some(&std::ffi::OsStr::new("rs"))
+    }).map(|p| {
+        p.path().to_string_lossy().to_string()
+    }).collect();
+    println!("{:?}", stuff);
+    assert_eq!(stuff.len(), 1);
+}
+
+#[test]
 fn read_nonexistent() {
     let stuff: Vec<_> = read_dir("this does not exist").map(|p| {
         p.path().to_string_lossy().to_string()
