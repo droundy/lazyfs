@@ -1,6 +1,6 @@
 # lazyfs
 
-[![Build Status](https://travis-ci.org/droundy/lazyfs.svg)](https://travis-ci.org/droundy/lazyfs)
+[![Build Status](https://travis-ci.org/droundy/lazyfs.svg)](https://travis-ci.org/droundy/lazyfs) [![Coverage Status](https://coveralls.io/repos/droundy/lazyfs/badge.svg?branch=master&service=github)](https://coveralls.io/github/droundy/lazyfs?branch=master)
 
 This is a tiny crate for rust utility functions that wrap a few
 `std::fs` functions.
